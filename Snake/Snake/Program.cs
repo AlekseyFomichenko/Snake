@@ -20,15 +20,15 @@ namespace Snake
             //p2.Draw();
             int x = 1;
             Func1(x);
-            Console.WriteLine("Call func. x = ");
+            Console.WriteLine("Call func. x = " + x);
 
             x = 1;
             Func2(x);
-            Console.WriteLine("Call func2 x = ");
+            Console.WriteLine("Call func2 x = " + x);
 
             x = 1;
             Func3(x);
-            Console.WriteLine("Call func3 x = ");
+            Console.WriteLine("Call func3 x = " + x);
 
             Point p1 = new Point(1, 3, '*');
             Move(p1, 10, 10);
