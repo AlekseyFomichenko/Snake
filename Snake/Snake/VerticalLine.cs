@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Snake
 {
-    internal class HorizontalLine
+    internal class VerticalLine
     {
         List<Point> points;
-        public HorizontalLine(int xLeft, int xRight, int y, char sym)
+        public VerticalLine(int yUp, int yDown, int x, char sym)
         {
             points = new List<Point>();
-            for (int x = xLeft; x <= xRight; x++)
+            for (int y = yUp; x <= yDown; x++)
             {
                 Point p = new Point(x, y, sym);
                 points.Add(p);
