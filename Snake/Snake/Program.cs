@@ -13,11 +13,12 @@ namespace Snake
         static void Main(string[] args)
         {
 
-            //Point p1 = new Point(3, 5, '*');
-            //p1.Draw();
+            Point p1 = new Point(3, 5, '*');
+            p1.Draw();
 
-            //Point p2 = new Point(7, 4, '#');
-            //p2.Draw();
+            Point p2 = new Point(7, 4, '#');
+            p2.Draw();
+            /*
             int x = 1;
             Func1(x);
             Console.WriteLine("Call func. x = " + x);
@@ -43,8 +44,12 @@ namespace Snake
             p1 = new Point(1, 3, '*');
             Update(p1);
             Console.WriteLine("Call Move. p1.x = " + p1.x + ", p1.y = " + p1.y);
-
+            */
+            List<Point> points = new List<Point>();
+            points.Add(p1);
+            points.Add(p2);
         }
+        /*
         public static void Func1(int value) { }
         public static void Func2(int value) { value++; }
         public static void Func3(int X) { X++; }
@@ -53,5 +58,7 @@ namespace Snake
             p.x += dx; p.y += dy;
         }
         public static void Update(Point p) { p = new Point(); }
+        */
+
     }
 }
