@@ -24,6 +24,8 @@ namespace Snake
 
             Point p = new Point(3, 5, '*');
             p.Draw();
+
+            Snake snake = new Snake(p, 4, Direction.Right);
         }
     }
 }
