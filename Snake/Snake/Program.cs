@@ -43,8 +43,8 @@ namespace Snake
                 }
                 
             }
-
-
+            GameOver.WriteGameOver();
+            Console.ReadLine();
         }
     }
 }

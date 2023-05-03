@@ -22,7 +22,7 @@ namespace Snake
                 points.Add(p);
             }
         }
-        internal void Move()
+        public void Move()
         {
             Point tail = points.First();
             points.Remove(tail);
@@ -49,7 +49,7 @@ namespace Snake
             else if (key == ConsoleKey.UpArrow && direction != Direction.Down)
                 direction = Direction.Up;
         }
-        internal bool Eat(Point food)
+        public bool Eat(Point food)
         {
             Point head = GetNextPoint();
             if (head.IsHit(food))
@@ -60,7 +60,7 @@ namespace Snake
             }
             else return false;
         }
-        internal bool IsHitTail()
+        public bool IsHitTail()
         {
             var head = points.Last();
             for (int i = 0; i < points.Count-2; i++)
