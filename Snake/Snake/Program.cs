@@ -13,7 +13,10 @@ namespace Snake
     {
         static void Main(string[] args)
         {
-            //Console.SetBufferSize(80, 25);
+            Console.WindowHeight = 26;
+            Console.WindowWidth = 80;
+            Console.CursorVisible = false;
+
             Walls walls= new Walls(80,25);
             walls.Draw();
 
@@ -44,7 +47,7 @@ namespace Snake
                 
             }
             GameOver.WriteGameOver();
-            Console.ReadLine();
+            Console.ReadKey();
         }
     }
 }
