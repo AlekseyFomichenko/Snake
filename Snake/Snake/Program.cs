@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Snake
@@ -12,46 +13,41 @@ namespace Snake
     {
         static void Main(string[] args)
         {
+            Console.WindowHeight = 26;
+            Console.WindowWidth = 80;
+            Console.CursorVisible = false;
 
-            //Point p1 = new Point(3, 5, '*');
-            //p1.Draw();
+            Walls walls= new Walls(80,25);
+            walls.Draw();
 
-            //Point p2 = new Point(7, 4, '#');
-            //p2.Draw();
-            int x = 1;
-            Func1(x);
-            Console.WriteLine("Call func. x = " + x);
+            Point p = new Point(4, 5, '*');
+            Snake snake = new Snake(p, 4, Direction.Right);
+            snake.Draw();
 
-            x = 1;
-            Func2(x);
-            Console.WriteLine("Call func2 x = " + x);
+            FoodSpam foodSpam = new FoodSpam(80, 25, '$');
+            Point food = foodSpam.CreateFood();
+            food.Draw();
 
-            x = 1;
-            Func3(x);
-            Console.WriteLine("Call func3 x = " + x);
-
-            Point p1 = new Point(1, 3, '*');
-            Move(p1, 10, 10);
-            Console.WriteLine("Call Move. p1.x = " + p1.x + ", p1.y = " + p1.y);
-
-            Point p2 = new Point(4, 5, '#');
-            p1 = p2;
-            p2.x = 8;
-            p2.y = 8;
-            Console.WriteLine("p1 = p2. p1.x = " + p1.x + ", p1.y = " + p1.y + "; p2.x = " + p2.x + ", p2.y = " + p2.y);
-
-            p1 = new Point(1, 3, '*');
-            Update(p1);
-            Console.WriteLine("Call Move. p1.x = " + p1.x + ", p1.y = " + p1.y);
-
+            while (true)
+            {
+                if (walls.IsHit(snake) || snake.IsHitTail()) // Проверка на столкновение со стеной и самим собой
+                    break;
+                if (snake.Eat(food)) // Проверка на встречу с едой
+                {
+                    food = foodSpam.CreateFood();
+                    food.Draw();
+                }
+                else snake.Move();
+                Thread.Sleep(100);
+                if (Console.KeyAvailable) // Управление змейкой
+                {
+                    ConsoleKeyInfo key = Console.ReadKey();
+                    snake.HandleKey(key.Key);
+                }
+                
+            }
+            GameOver.WriteGameOver();
+            Console.ReadKey();
         }
-        public static void Func1(int value) { }
-        public static void Func2(int value) { value++; }
-        public static void Func3(int X) { X++; }
-        public static void Move(Point p, int dx, int dy)
-        {
-            p.x += dx; p.y += dy;
-        }
-        public static void Update(Point p) { p = new Point(); }
     }
 }
